@@ -24,10 +24,33 @@ export function getPageImage(page: InferPageType<typeof source>) {
   };
 }
 
+/**
+ * Strip MDX components from text for LLM consumption
+ * Converts <Cards>/<Card> to plain markdown links
+ */
+function stripMdxComponents(text: string): string {
+  return text
+    // Remove <Cards> wrapper tags
+    .replace(/<Cards[^>]*>/gi, '')
+    .replace(/<\/Cards>/gi, '')
+    // Convert <Card title="X" href="Y" /> to markdown link
+    .replace(/<Card\s+title="([^"]+)"\s+href="([^"]+)"\s*\/>/gi, '- [$1]($2)')
+    .replace(/<Card\s+href="([^"]+)"\s+title="([^"]+)"\s*\/>/gi, '- [$2]($1)')
+    // Remove any remaining self-closing Card tags
+    .replace(/<Card[^>]*\/>/gi, '')
+    // Remove any remaining Card open/close tags
+    .replace(/<Card[^>]*>/gi, '')
+    .replace(/<\/Card>/gi, '')
+    // Clean up excessive newlines
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 export async function getLLMText(page: InferPageType<typeof source>) {
   const processed = await page.data.getText('processed');
+  const cleaned = stripMdxComponents(processed);
 
   return `# ${page.data.title}
 
-${processed}`;
+${cleaned}`;
 }
