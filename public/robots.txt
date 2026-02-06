@@ -1,0 +1,37 @@
+# BlockMind Documentation - robots.txt
+# Allow all crawlers including AI/LLM bots
+
+User-agent: *
+Allow: /
+
+# Explicitly allow AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemap
+Sitemap: https://docs.blockmind.app/sitemap.xml
+
+# LLM-friendly content
+# llms.txt: https://docs.blockmind.app/llms.txt
+# llms-full.txt: https://docs.blockmind.app/llms-full.txt

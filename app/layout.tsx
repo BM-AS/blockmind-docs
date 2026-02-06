@@ -2,6 +2,32 @@ import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+import Script from 'next/script';
+
+// Organization structured data for LLM optimization
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'BlockMind',
+  url: 'https://blockmind.app',
+  logo: 'https://blockmind.app/icon-512.png',
+  description: 'BlockMind is an intelligent crypto portfolio tracking platform with AI-powered analysis.',
+  sameAs: [
+    'https://twitter.com/blockmind_agent',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'BlockMind Documentation',
+  url: 'https://docs.blockmind.app',
+  description: 'Official documentation for BlockMind crypto portfolio tracker.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'BlockMind',
+  },
+};
 
 const inter = Inter({
   subsets: ['latin'],
@@ -49,6 +75,16 @@ export default function Layout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
         <RootProvider>{children}</RootProvider>
       </body>
     </html>
