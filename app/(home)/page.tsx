@@ -7,21 +7,21 @@ export default function HomePage() {
       {/* Hero */}
       <div className="flex items-center gap-3 mb-6">
         <Image
-          src="/logo.svg"
+          src="/icon-192.png"
           alt="BlockMind"
-          width={48}
-          height={48}
-          className="dark:invert"
+          width={40}
+          height={40}
+          className="rounded-lg"
         />
-        <span className="text-3xl font-bold tracking-tight">BlockMind</span>
+        <span className="text-2xl font-semibold tracking-tight">BlockMind</span>
       </div>
       
       <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 tracking-tight">
         Documentation
       </h1>
       
-      <p className="text-lg text-muted-foreground text-center mb-8 max-w-xl">
-        Learn how to track your crypto portfolio, get AI-powered insights, and make smarter investment decisions.
+      <p className="text-lg text-muted-foreground text-center mb-8 max-w-xl leading-relaxed">
+        Everything you need to track your crypto portfolio, analyze tokens, and understand market conditions.
       </p>
       
       <div className="flex gap-3 mb-16">
@@ -37,7 +37,7 @@ export default function HomePage() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Open App →
+          Open BlockMind
         </Link>
       </div>
 
@@ -45,36 +45,48 @@ export default function HomePage() {
       <div className="grid gap-4 md:grid-cols-3 max-w-4xl w-full">
         <Link href="/docs/portfolio/overview" className="group">
           <div className="p-6 rounded-xl border bg-card hover:border-primary/50 transition-colors h-full">
-            <div className="text-2xl mb-3">📊</div>
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
             <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
               Portfolio Tracking
             </h3>
-            <p className="text-sm text-muted-foreground">
-              Connect wallets, track holdings across chains, and monitor your entire portfolio in one place.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Connect your wallets and monitor holdings across Ethereum, Base, Polygon, Arbitrum, Solana, and more.
             </p>
           </div>
         </Link>
         
         <Link href="/docs/deepdive/getting-started" className="group">
           <div className="p-6 rounded-xl border bg-card hover:border-primary/50 transition-colors h-full">
-            <div className="text-2xl mb-3">🤖</div>
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
             <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
-              AI Analysis
+              DeepDive Analysis
             </h3>
-            <p className="text-sm text-muted-foreground">
-              Get comprehensive DeepDive reports with on-chain data, sentiment analysis, and risk assessment.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Generate comprehensive reports with on-chain metrics, sentiment data, and risk assessment for any token.
             </p>
           </div>
         </Link>
         
         <Link href="/docs/market/overview" className="group">
           <div className="p-6 rounded-xl border bg-card hover:border-primary/50 transition-colors h-full">
-            <div className="text-2xl mb-3">📈</div>
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
             <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
-              Market Insights
+              Market Indicators
             </h3>
-            <p className="text-sm text-muted-foreground">
-              Track Fear & Greed, Altcoin Season, BTC Dominance, and our proprietary Contrarian Index.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Track Fear & Greed Index, Altcoin Season, BTC Dominance, and our proprietary Contrarian Index.
             </p>
           </div>
         </Link>
@@ -82,7 +94,7 @@ export default function HomePage() {
 
       {/* Quick Links */}
       <div className="mt-16 text-center">
-        <p className="text-sm text-muted-foreground mb-4">Quick links</p>
+        <p className="text-sm text-muted-foreground mb-4">Resources</p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Link 
             href="/docs/getting-started/troubleshooting" 
@@ -90,26 +102,26 @@ export default function HomePage() {
           >
             Troubleshooting
           </Link>
-          <span className="text-muted-foreground/50">·</span>
+          <span className="text-muted-foreground/30">|</span>
           <Link 
             href="/faq" 
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             FAQ
           </Link>
-          <span className="text-muted-foreground/50">·</span>
+          <span className="text-muted-foreground/30">|</span>
           <Link 
             href="/docs/market/how-indicators-work" 
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            How Indicators Work
+            Methodology
           </Link>
-          <span className="text-muted-foreground/50">·</span>
+          <span className="text-muted-foreground/30">|</span>
           <a 
             href="mailto:support@blockmind.app" 
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            Contact Support
+            Support
           </a>
         </div>
       </div>

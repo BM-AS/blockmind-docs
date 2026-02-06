@@ -11,29 +11,37 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://docs.blockmind.app'),
   title: {
     default: 'BlockMind Documentation',
-    template: '%s | BlockMind Docs',
+    template: '%s — BlockMind Docs',
   },
-  description: 'Learn how to track your crypto portfolio, get AI-powered insights, and make smarter investment decisions with BlockMind.',
-  keywords: ['crypto', 'portfolio', 'tracker', 'DeFi', 'blockchain', 'wallet', 'analysis', 'documentation'],
-  authors: [{ name: 'BlockMind' }],
+  description: 'Official documentation for BlockMind. Learn how to track your crypto portfolio, analyze tokens, and monitor market conditions.',
+  keywords: ['BlockMind', 'crypto', 'portfolio tracker', 'DeFi', 'blockchain', 'wallet', 'analysis'],
+  authors: [{ name: 'BlockMind', url: 'https://blockmind.app' }],
   creator: 'BlockMind',
+  publisher: 'BlockMind',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://docs.blockmind.app',
     siteName: 'BlockMind Documentation',
     title: 'BlockMind Documentation',
-    description: 'Learn how to track your crypto portfolio, get AI-powered insights, and make smarter investment decisions.',
+    description: 'Official documentation for BlockMind. Learn how to track your crypto portfolio, analyze tokens, and monitor market conditions.',
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: 'BlockMind Documentation',
-    description: 'Learn how to track your crypto portfolio, get AI-powered insights, and make smarter investment decisions.',
+    description: 'Official documentation for BlockMind.',
     creator: '@blockmind_agent',
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
     apple: '/apple-touch-icon.png',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
