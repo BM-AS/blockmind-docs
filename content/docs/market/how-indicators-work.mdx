@@ -1,0 +1,184 @@
+---
+title: How Indicators Work
+description: Technical details on how BlockMind calculates market indicators.
+---
+
+# How Indicators Work
+
+This page explains the methodology behind each market indicator. Understanding how they're calculated helps you use them more effectively.
+
+## Fear & Greed Index
+
+The Fear & Greed Index measures overall crypto market sentiment on a 0-100 scale.
+
+### Data Sources
+
+We aggregate data from multiple sources:
+
+| Factor | Weight | What It Measures |
+|--------|--------|------------------|
+| Volatility | 25% | Unusual price swings vs 30/90-day averages |
+| Market Momentum | 25% | Volume and price momentum vs averages |
+| Social Media | 15% | Crypto mentions, hashtags, engagement rates |
+| Dominance | 10% | Bitcoin's share of total market cap |
+| Trends | 10% | Google search volume for crypto terms |
+| Surveys | 15% | Weekly polling of market participants |
+
+### Calculation
+
+1. Each factor is normalized to a 0-100 scale
+2. Weighted average produces the final index
+3. Updated every few hours
+
+### Interpretation
+
+| Score | Label | Market Behavior |
+|-------|-------|-----------------|
+| 0-25 | Extreme Fear | Panic selling, potential capitulation |
+| 25-45 | Fear | Cautious, risk-off sentiment |
+| 45-55 | Neutral | Balanced, no strong bias |
+| 55-75 | Greed | Optimistic, risk-on sentiment |
+| 75-100 | Extreme Greed | Euphoria, potential market top |
+
+**Contrarian use:** Many traders buy during Extreme Fear and reduce exposure during Extreme Greed.
+
+## Altcoin Season Index
+
+Measures whether altcoins or Bitcoin is leading the market.
+
+### Methodology
+
+1. Track the top 50 altcoins by market cap (excluding stablecoins)
+2. Compare each altcoin's 90-day performance to Bitcoin's
+3. Count how many altcoins outperformed BTC
+
+### Calculation
+
+```
+Altcoin Season Score = (Outperformers / Total Altcoins) × 100
+```
+
+If 40 out of 50 altcoins outperformed Bitcoin → Score = 80 (Altseason)
+
+### Interpretation
+
+| Score | Label | What It Means |
+|-------|-------|---------------|
+| 0-25 | BTC Season | Bitcoin strongly outperforming |
+| 25-40 | BTC Leaning | Bitcoin performing better |
+| 40-60 | Neutral | Mixed performance |
+| 60-75 | Alt Leaning | Altcoins performing better |
+| 75-100 | Altseason | Altcoins strongly outperforming |
+
+### Historical Patterns
+
+- **Bull market peaks** often see extreme Altseason readings
+- **Bear market bottoms** often see extreme BTC Season
+- **Early bull markets** typically start with BTC Season
+
+## BTC Dominance
+
+Bitcoin's percentage share of the total cryptocurrency market cap.
+
+### Calculation
+
+```
+BTC Dominance = (Bitcoin Market Cap / Total Crypto Market Cap) × 100
+```
+
+**Example:** If Bitcoin is worth $1T and total crypto is $2T → Dominance = 50%
+
+### Data Source
+
+Real-time market cap data aggregated from major exchanges and data providers.
+
+### Interpretation
+
+| Dominance | Trend | Interpretation |
+|-----------|-------|----------------|
+| Rising toward 60%+ | BTC strengthening | Flight to safety, bear market behavior |
+| Stable 45-55% | Balanced | Normal market conditions |
+| Falling toward 40% | Alts strengthening | Risk-on, altcoin speculation |
+| Below 40% | Extreme | Usually indicates altcoin mania |
+
+### Historical Context
+
+- **2017 peak:** Fell below 35% during ICO mania
+- **2018-2019 bear:** Rose above 70%
+- **2021 peaks:** Dropped to ~40% during altcoin rallies
+- **Current cycle:** Typically ranges 45-55%
+
+## Contrarian Index
+
+BlockMind's proprietary indicator for identifying potential market turning points.
+
+### Methodology
+
+The Contrarian Index combines leverage and positioning data to detect crowded trades:
+
+**Inputs:**
+1. **Aggregated Open Interest (OI)** — Total value of outstanding futures contracts
+2. **Long/Short Ratio** — Binance trader positioning data
+3. **Funding Rates** — Cost of holding leveraged positions
+
+### Calculation Process
+
+1. Calculate z-scores for each input (standard deviations from mean)
+2. Weight and combine z-scores
+3. Transform to 0-100 scale using: `50 + 50 × tanh(z-score / 1.25)`
+
+### Why Z-Scores?
+
+Z-scores normalize data across different magnitudes, allowing us to compare:
+- "OI is 2 standard deviations above average"
+- "Long/short ratio is 1.5 standard deviations below average"
+
+### Interpretation
+
+| Score | Label | Signal |
+|-------|-------|--------|
+| 0-25 | Extreme Fear | Contrarian **bullish** — market oversold |
+| 25-45 | Fear | Below average positioning |
+| 45-55 | Neutral | Balanced positioning |
+| 55-75 | Greed | Above average positioning |
+| 75-100 | Extreme Greed | Contrarian **bearish** — market overleveraged |
+
+**Key insight:** Unlike Fear & Greed (which is directional), the Contrarian Index is specifically designed for contrarian trading — extreme readings suggest potential reversals.
+
+## Data Quality & Limitations
+
+### What We Do Well
+
+- **Multiple data sources** — No single point of failure
+- **Regular updates** — Indicators refresh throughout the day
+- **Historical context** — 30+ days of history for trend analysis
+- **Transparent methodology** — You know what you're looking at
+
+### Limitations
+
+1. **Lagging indicators** — By definition, sentiment follows price
+2. **Not predictive** — These measure current state, not future direction
+3. **Can stay extreme** — Markets can remain "irrational" for extended periods
+4. **Data source changes** — API updates can temporarily affect readings
+
+### Best Practices
+
+1. **Use multiple indicators** — Don't rely on any single metric
+2. **Consider timeframes** — Daily noise vs weekly trends
+3. **Combine with your analysis** — Indicators inform, not dictate
+4. **Watch for divergences** — When indicators disagree, dig deeper
+
+## Update Schedule
+
+| Indicator | Update Frequency |
+|-----------|------------------|
+| Fear & Greed | Every 6-8 hours |
+| Altcoin Season | Daily |
+| BTC Dominance | Real-time (minute-level) |
+| Contrarian Index | Every 4 hours |
+
+## Further Reading
+
+- [Market Overview](/docs/market/overview) — How to use the Market page
+- [DeepDive Analysis](/docs/deepdive/getting-started) — Token-specific insights
+- [Interpreting Reports](/docs/deepdive/interpreting-reports) — Making sense of data

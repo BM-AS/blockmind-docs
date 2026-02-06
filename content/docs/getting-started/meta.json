@@ -3,6 +3,7 @@
   "pages": [
     "what-is-blockmind",
     "create-account",
-    "connect-wallet"
+    "connect-wallet",
+    "troubleshooting"
   ]
 }
