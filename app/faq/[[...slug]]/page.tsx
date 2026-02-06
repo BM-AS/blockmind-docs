@@ -100,8 +100,16 @@ export async function generateMetadata(props: { params: Promise<{ slug?: string[
   const page = faqSource.getPage(params.slug);
   if (!page) notFound();
 
+  const canonicalUrl = `https://docs.blockmind.app${page.url}`;
+
   return {
     title: page.data.title,
     description: page.data.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      url: canonicalUrl,
+    },
   };
 }
