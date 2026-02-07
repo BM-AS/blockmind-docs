@@ -1,0 +1,159 @@
+---
+title: Security & Privacy
+description: How BlockMind protects your data and keeps your crypto safe.
+---
+
+# Security & Privacy
+
+BlockMind is designed with security-first principles. Your data stays private, your funds stay safe, and you stay in control.
+
+## Our Security Model
+
+### Read-Only Access
+
+BlockMind operates on a **read-only model**. When you connect a wallet or enter an address:
+
+- We can **view** your public wallet address
+- We can **read** your on-chain balances
+- We **cannot** move funds, sign transactions, or access private keys
+
+Think of BlockMind like a blockchain explorer that knows which addresses to watch. We see the same public data anyone can see on-chain — we just present it in a useful way.
+
+### What We Can't Do
+
+BlockMind has **no ability** to:
+
+- Access your private keys or seed phrases
+- Sign transactions on your behalf
+- Move or transfer any funds
+- Approve smart contract interactions
+- Access your wallet beyond your public address
+
+Even if BlockMind were compromised, attackers could not access your funds because we never have that access to begin with.
+
+## Data Protection
+
+### Encryption
+
+All data in transit uses TLS 1.3 encryption (HTTPS). Your connection to BlockMind is always encrypted.
+
+### Data Storage
+
+We store:
+- **Email address**: For authentication only
+- **Wallet addresses**: To track your portfolios
+- **Portfolio preferences**: Your settings and watchlists
+- **Usage analytics**: Anonymous product improvement data
+
+We do **not** store:
+- Private keys (we never see them)
+- Seed phrases (we never see them)
+- Transaction signing capabilities
+- Passwords (we use passwordless auth)
+
+### Data Retention
+
+Your data is retained while your account is active. When you delete your account, all associated data is permanently removed within 30 days.
+
+## Privacy Practices
+
+### No Data Sales
+
+We do not sell your personal information. Period.
+
+### No Cross-Site Tracking
+
+We don't track you across the web. Our analytics are limited to understanding how people use BlockMind.
+
+### No Third-Party Data Sharing
+
+We don't share your portfolio data with third parties. Your holdings are visible only to you.
+
+### Private by Default
+
+All portfolios are private. Only you can see your holdings and watchlists.
+
+## Authentication Security
+
+### Passwordless Login
+
+BlockMind uses email-based magic links instead of passwords. Benefits:
+
+- **No password to steal**: Phishing-resistant authentication
+- **No password to forget**: Just check your email
+- **Session-based**: Each login creates a fresh session
+
+### Session Management
+
+- Sessions expire after inactivity
+- You can log out from all devices
+- Each device gets a unique session token
+
+## Wallet Connection Security
+
+### WalletConnect Protocol
+
+We use WalletConnect, an industry-standard protocol for connecting wallets to dApps. When you connect:
+
+1. Your wallet shows what permissions are requested
+2. You approve the connection
+3. BlockMind receives only your public address
+
+### What the Connection Allows
+
+A wallet connection gives BlockMind permission to:
+- View your public wallet address
+- View your public balance (same as any block explorer)
+
+A wallet connection does **not** allow:
+- Transaction signing
+- Fund transfers
+- Any write operations
+
+## Common Security Questions
+
+### Can BlockMind steal my crypto?
+
+**No.** We have read-only access to public wallet data. We cannot sign transactions or move funds.
+
+### Is WalletConnect safe?
+
+Yes. WalletConnect is an open-source protocol used by hundreds of applications. It only shares your public address unless you explicitly approve additional permissions.
+
+### What if BlockMind gets hacked?
+
+Even in a worst-case scenario, attackers could only see public wallet addresses — the same information available to anyone on the blockchain. No private keys or funds are at risk.
+
+### Should I use a hardware wallet?
+
+Yes! Hardware wallets add an extra layer of security for significant holdings. BlockMind works perfectly with hardware wallets — you just connect and we read your public address.
+
+### Can I use BlockMind anonymously?
+
+You need an email to create an account, but you can use any email service including privacy-focused ones. Your wallet addresses are never publicly linked to your email.
+
+## Reporting Security Issues
+
+Found a vulnerability? We appreciate responsible disclosure.
+
+**Email**: security@blockmind.app
+
+Please include:
+- Description of the vulnerability
+- Steps to reproduce
+- Potential impact
+- Your contact information
+
+We'll acknowledge receipt within 48 hours and keep you updated on our investigation.
+
+## Our Commitment
+
+Security isn't a feature — it's fundamental to how we build. We:
+
+- Conduct regular security reviews
+- Follow security best practices
+- Keep dependencies updated
+- Limit data collection to what's necessary
+- Design systems assuming zero trust
+
+Your security is our priority.
