@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { source, faqSource } from '@/lib/source';
+import { source, faqSource, blogSource } from '@/lib/source';
 
 const baseUrl = 'https://docs.blockmind.app';
 
@@ -36,5 +36,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...docsPages, ...faqPages];
+  // Get all blog pages
+  const blogPages = blogSource.getPages().map((page) => ({
+    url: `${baseUrl}${page.url}`,
+    lastModified: new Date(page.data.date || '2026-02-07'),
+    changeFrequency: 'weekly' as const,
+    priority: 0.6,
+  }));
+
+  // Blog index
+  const blogIndex = {
+    url: `${baseUrl}/blog`,
+    lastModified: new Date('2026-02-07'),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  };
+
+  return [...staticPages, ...docsPages, ...faqPages, blogIndex, ...blogPages];
 }

@@ -1,4 +1,4 @@
-import { docs, faq } from 'fumadocs-mdx:collections/server';
+import { docs, faq, blog } from 'fumadocs-mdx:collections/server';
 import { type InferPageType, loader } from 'fumadocs-core/source';
 import { lucideIconsPlugin } from 'fumadocs-core/source/lucide-icons';
 
@@ -12,6 +12,12 @@ export const source = loader({
 export const faqSource = loader({
   baseUrl: '/faq',
   source: faq.toFumadocsSource(),
+  plugins: [lucideIconsPlugin()],
+});
+
+export const blogSource = loader({
+  baseUrl: '/blog',
+  source: blog.toFumadocsSource(),
   plugins: [lucideIconsPlugin()],
 });
 
