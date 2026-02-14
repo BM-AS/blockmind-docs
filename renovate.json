@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "schedule": ["before 9am on monday"],
+  "timezone": "Europe/Oslo",
+  "prConcurrentLimit": 2,
+  "labels": ["chore"],
+  "packageRules": [
+    {
+      "description": "Group all non-major updates",
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "minor & patch dependencies"
+    },
+    {
+      "description": "Group Fumadocs ecosystem",
+      "matchPackagePatterns": ["^fumadocs"],
+      "groupName": "fumadocs"
+    },
+    {
+      "description": "Automerge patch updates when CI passes",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    }
+  ]
+}
