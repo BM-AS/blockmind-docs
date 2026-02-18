@@ -1,14 +1,21 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { blogSource } from '@/lib/source';
 
 export default function HomePage() {
+  const latestPosts = blogSource.getPages().sort((a, b) => {
+    const dateA = new Date(a.data.date || '').getTime();
+    const dateB = new Date(b.data.date || '').getTime();
+    return dateB - dateA;
+  }).slice(0, 3);
+
   return (
     <div className="flex flex-col items-center justify-center flex-1 px-4 py-16">
       {/* Hero */}
       <div className="flex items-center gap-3 mb-6">
         <Image
           src="/icon-192.png"
-          alt="BlockMind"
+          alt="BlockMind logo"
           width={40}
           height={40}
           className="rounded-lg"
@@ -92,10 +99,44 @@ export default function HomePage() {
         </Link>
       </div>
 
+      {/* Latest from Blog */}
+      {latestPosts.length > 0 && (
+        <div className="mt-16 max-w-4xl w-full">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold tracking-tight">Latest from the Blog</h2>
+            <Link href="/blog" className="text-sm text-primary hover:underline">
+              View all posts →
+            </Link>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {latestPosts.map((post) => (
+              <Link key={post.url} href={post.url} className="group">
+                <div className="p-5 rounded-xl border bg-card hover:border-primary/50 transition-colors h-full flex flex-col">
+                  <p className="text-xs text-muted-foreground mb-2">{post.data.date}</p>
+                  <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors text-sm leading-snug">
+                    {post.data.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed mt-auto">
+                    {post.data.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Quick Links */}
       <div className="mt-16 text-center">
         <p className="text-sm text-muted-foreground mb-4">Resources</p>
         <div className="flex flex-wrap gap-4 justify-center">
+          <Link 
+            href="/blog" 
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Blog
+          </Link>
+          <span className="text-muted-foreground/30">|</span>
           <Link 
             href="/docs/getting-started/troubleshooting" 
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
